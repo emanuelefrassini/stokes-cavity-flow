@@ -1,0 +1,19 @@
+# MATLAB outputs and autosaves
+*.asv
+*.autosave
+*.mat
+*.mlx.autosave
+slprj/
+codegen/
+# Run-generated images and numerical data
+figures/*.png
+results/
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+# Python helpers are not part of this MATLAB repository
+__pycache__/
+*.pyc
+.venv/

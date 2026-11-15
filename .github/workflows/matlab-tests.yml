@@ -1,0 +1,21 @@
+name: GNU Octave Stokes numerical tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  mac-stokes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install GNU Octave (no MATLAB licence needed)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends octave
+          octave --version
+      - name: Run non-graphical numerical regression tests
+        run: octave --no-gui --quiet --eval "run_tests"
