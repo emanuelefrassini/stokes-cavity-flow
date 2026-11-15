@@ -6,6 +6,12 @@ I revisited my Computational Fluid Dynamics coursework and developed this standa
 
 The code also runs in **free GNU Octave**, so a MATLAB licence is not required.
 
+## Lid-driven cavity simulation
+
+![Steady Stokes lid-driven cavity simulation](figures/cavity_n24.png)
+
+*Steady Stokes cavity flow on a 24 × 24 MAC grid, showing the computed flow and pressure fields.*
+
 ## Mathematical problem
 
 On the unit square, solve the **steady Stokes equations**
@@ -70,6 +76,12 @@ The smooth manufactured-solution refinement study produced:
 | 16 | 3.9904e-2 | 3.1855e-3 | 1.948 | 1.963 |
 | 24 | 1.7851e-2 | 1.4225e-3 | 1.984 | 1.988 |
 | 32 | 1.0064e-2 | 8.0148e-4 | **1.992** | **1.994** |
+
+### Grid-refinement results
+
+![Manufactured-solution convergence](figures/refinement_errors.png)
+
+*Grid-refinement study showing approximately second-order convergence for velocity and pressure.*
 
 The observed convergence approaches second order for both velocity and pressure. A small algebraic residual verifies the **discrete** system and mass conservation; the separate exact-solution study supports solution accuracy. These results are *user-provided GNU Octave output*, not a MATLAB run or a finite-Reynolds-number CFD benchmark. See [validation and scope](docs/validation.md) and [machine-readable observations](docs/octave_refinement_2026-11-15.csv).
 
