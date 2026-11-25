@@ -1,6 +1,6 @@
 # Stokes Flow and Lid-Driven Cavity — MATLAB / GNU Octave
 
-**A sparse finite-difference solver for the two-dimensional steady incompressible Stokes equations, with numerical verification and a lid driven cavity example.**
+**A sparse finite difference solver for the two-dimensional steady incompressible Stokes equations, with numerical verification and a lid driven cavity example.**
 
 I revisited my Computational Fluid Dynamics coursework and developed this standalone MATLAB project to explore staggered grid discretizations, incompressibility constraints, pressure gauge fixing, and numerical convergence. I have preserved selected original coursework scripts under [`legacy/coursework/`](legacy/README.md), separately from the new, tested MAC-grid implementation. 
 
