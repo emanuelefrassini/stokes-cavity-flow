@@ -1,12 +1,12 @@
 # Stokes Flow and Lid-Driven Cavity — MATLAB / GNU Octave
 
-**A toolbox-free, sparse finite-difference solver for the two-dimensional steady incompressible Stokes equations, with numerical verification and a lid-driven cavity example.**
+**A sparse finite-difference solver for the two-dimensional steady incompressible Stokes equations, with numerical verification and a lid driven cavity example.**
 
-I revisited my Computational Fluid Dynamics coursework and developed this standalone MATLAB-compatible project to explore staggered-grid discretizations, incompressibility constraints, pressure gauge fixing, and numerical convergence. I have preserved selected original coursework scripts under [`legacy/coursework/`](legacy/README.md), separately from the new, tested MAC-grid implementation. **The original mixed vorticity–velocity–pressure coursework solver has not been verified or claimed equivalent to this implementation.**
+I revisited my Computational Fluid Dynamics coursework and developed this standalone MATLAB project to explore staggered grid discretizations, incompressibility constraints, pressure gauge fixing, and numerical convergence. I have preserved selected original coursework scripts under [`legacy/coursework/`](legacy/README.md), separately from the new, tested MAC-grid implementation. 
 
 The code also runs in **free GNU Octave**, so a MATLAB licence is not required.
 
-## Lid-driven cavity simulation
+## Lid driven cavity simulation
 
 ![Steady Stokes lid-driven cavity simulation](figures/cavity_n24.png)
 
@@ -21,12 +21,12 @@ On the unit square, solve the **steady Stokes equations**
 \qquad \nabla\cdot\mathbf{u}=0.
 \]
 
-The lid-driven cavity uses a unit horizontal velocity on the top wall and stationary other walls. This is a **creeping-flow/Stokes** problem, **not** the nonlinear finite-Reynolds-number Navier–Stokes cavity benchmark.
+The lid driven cavity uses a unit horizontal velocity on the top wall and stationary other walls. This is a **creeping-flow/Stokes** problem.
 
 ## Numerical method
 
-- Uniform staggered **MAC grid**: face-centred velocities, cell-centred pressures.
-- Sparse five-point viscous operator and conservative discrete divergence.
+- Uniform staggered **MAC grid**: face centred velocities, cell-centred pressures.
+- Sparse five point viscous operator and conservative discrete divergence.
 - Dirichlet velocity conditions, with mirrored ghost values for tangential components.
 - One pressure degree of freedom pinned to eliminate the pressure null space.
 - Sparse linear solution using MATLAB/Octave backslash.
@@ -55,7 +55,7 @@ run_demo
 run('experiments/refinement_study.m')
 ```
 
-`run_demo` saves `figures/cavity_n24.png`; the refinement study writes `results/refinement.csv`. Run-generated plots and intermediate numerical files are gitignored until intentionally reviewed and added. Some WSL configurations emit Mesa/EGL graphics warnings; inspect whether the PNG was saved before diagnosing a plotting failure.
+`run_demo` saves `figures/cavity_n24.png`. The refinement study writes `results/refinement.csv`. Run-generated plots and intermediate numerical files are gitignored until intentionally reviewed and added. Some WSL configurations emit Mesa/EGL graphics warnings. Inspect whether the PNG was saved before diagnosing a plotting failure.
 
 ## Numerical validation
 
@@ -67,7 +67,7 @@ The new MATLAB-compatible solver was **executed successfully in GNU Octave on WS
 | Maximum discrete divergence | 4.9735 × 10⁻¹⁵ |
 | Relative saddle-system residual | 3.9475 × 10⁻¹⁶ |
 
-The smooth manufactured-solution refinement study produced:
+The smooth manufactured solution refinement study produced:
 
 | Cells per side | Max velocity error | Max pressure error | Velocity order | Pressure order |
 |---:|---:|---:|---:|---:|
@@ -81,9 +81,9 @@ The smooth manufactured-solution refinement study produced:
 
 ![Manufactured-solution convergence](figures/refinement_errors.png)
 
-*Grid-refinement study showing approximately second-order convergence for velocity and pressure.*
+*Grid refinement study showing approximately second-order convergence for velocity and pressure.*
 
-The observed convergence approaches second order for both velocity and pressure. A small algebraic residual verifies the **discrete** system and mass conservation; the separate exact-solution study supports solution accuracy. These results are *user-provided GNU Octave output*, not a MATLAB run or a finite-Reynolds-number CFD benchmark. See [validation and scope](docs/validation.md) and [machine-readable observations](docs/octave_refinement_2026-11-15.csv).
+The observed convergence approaches second order for both velocity and pressure. A small algebraic residual verifies the **discrete** system and mass conservation. The separate exact solution study supports solution accuracy. These results are *user-provided GNU Octave output*, not a MATLAB run or a finite-Reynolds-number CFD benchmark. See [validation and scope](docs/validation.md) and [machine-readable observations](docs/octave_refinement_2026-11-15.csv).
 
 ## Repository structure
 
@@ -102,11 +102,10 @@ GitHub Actions runs `run_tests` **with GNU Octave**, without requiring MATLAB cr
 ## Scope and limitations
 
 - **Steady Stokes only:** no transient flow, convective Navier–Stokes terms, turbulence model, or Reynolds-number sweeps.
-- The unit-speed lid has corner discontinuities. Reported cavity checks test algebraic consistency and continuity, not a comparison to experimental or classic finite-Reynolds-number cavity profiles.
+- The unit speed lid has corner discontinuities. Reported cavity checks test algebraic consistency and continuity, not a comparison to experimental or classic finite-Reynolds-number cavity profiles.
 - The unmodified historical coursework scripts are included for provenance and have **not** been validated against the new solver.
-- The plotted cell-centre velocity is interpolated from the staggered face velocities.
-- MATLAB execution and exact version equivalence with GNU Octave have not been checked independently; the GNU Octave CLI numerical tests did pass.
+- The plotted cell centre velocity is interpolated from the staggered face velocities.
 
 ## Attribution
 
-This project originates in my CFD coursework. I retained selected original MATLAB scripts as historical references and organized a new sparse MAC-grid implementation with independent verification cases. Third-party coursework utilities are not redistributed. If publishing the repository under an open-source licence, choose one that matches your intended reuse permissions.
+This project originates in my CFD coursework. I retained selected original MATLAB scripts as historical references and organized a new sparse MAC-grid implementation with independent verification cases. Third-party coursework utilities are not redistributed. If publishing the repository under an open source licence, choose one that matches your intended reuse permissions.
