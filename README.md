@@ -16,10 +16,10 @@ The code also runs in **free GNU Octave**, so a MATLAB licence is not required.
 
 On the unit square, solve the **steady Stokes equations**
 
-\[
+$$
 -\nu\Delta\mathbf{u}+\nabla p=\mathbf{f},
 \qquad \nabla\cdot\mathbf{u}=0.
-\]
+$$
 
 The lid driven cavity uses a unit horizontal velocity on the top wall and stationary other walls. This is a **creeping-flow/Stokes** problem.
 
